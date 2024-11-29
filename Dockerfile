@@ -1,10 +1,5 @@
 # First stage: Build the native executable using GraalVM
-FROM ghcr.io/graalvm/jdk-community:17.0.9-ol9-20231024 AS build
-
-# Install required dependencies for native-image
-RUN microdnf update -y && \
-    microdnf install -y findutils gcc glibc-devel zlib-devel libstdc++-devel gcc-c++ && \
-    microdnf clean all
+FROM ghcr.io/graalvm/graalvm-ce:22.3.1 AS build
 
 WORKDIR /usr/src/app
 
